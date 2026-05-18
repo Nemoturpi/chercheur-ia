@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>L'impact de l'IA générative sur la production du savoir scientifique</title><style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=Source+Serif+4:wght@600;700&display=swap");
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--red:#C41230;--k:#1A1A1A;--mid:#4A4A4A;--muted:#7A7A7A;--rule:#DEDCDA;--bg:#fff;--off:#F5F4F2;--f:'Inter',system-ui,sans-serif;--serif:'Source Serif 4',Georgia,serif}
+html,body{font-family:var(--f);background:#111;height:100%;overflow:hidden}#deck{width:100vw;height:100vh;position:relative;overflow:hidden}.s{position:absolute;inset:0;background:var(--bg);padding:5.2vh 6.8vw 7vh 6.8vw;display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateX(28px);transition:opacity .3s ease,transform .3s ease}.s.active{opacity:1;pointer-events:all;transform:translateX(0)}.s.out{opacity:0;transform:translateX(-28px);transition:opacity .22s,transform .22s}.lbar{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--red)}.tag{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:2.4vh}.rl{width:38px;height:3px;background:var(--red);margin:1.8vh 0}.ev{font-size:13px;font-weight:700;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3.2vh}
+.s-cover{border-left:8px solid var(--red);justify-content:center;padding-left:8vw}.s-cover h1{font-size:clamp(28px,5.2vh,58px);font-weight:900;color:var(--k);line-height:1.04;margin-bottom:2.2vh}.sub-it{font-size:clamp(16px,2.1vh,23px);font-style:italic;color:var(--red)}.chr{border:none;border-top:1px solid var(--rule);margin:3vh 0;max-width:46vw}.auth{font-size:22px;font-weight:700;color:var(--k);margin-bottom:.6vh}.role,.contact{font-size:16px;color:var(--mid)}.contact{margin-top:1vh}
+.s-turnant-option2{justify-content:center}.to2-wrap{max-width:78vw;display:flex;flex-direction:column;align-items:flex-start}.to2-line{font-size:clamp(26px,4.2vh,46px);font-weight:700;color:var(--k);line-height:1.22;max-width:72vw}.to2-arrow{font-size:clamp(36px,5.8vh,70px);line-height:1;color:var(--red);margin:2.2vh 0 2.2vh 0;padding-left:.2vw}
+.s-obj2{justify-content:center}.obj2-title{font-size:clamp(26px,4.8vh,52px);font-weight:900;color:var(--k);line-height:1.08;margin-bottom:3vh;max-width:82vw}.obj2-wrap{max-width:82vw}.obj2-block h3{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}.obj2-block p{font-size:clamp(21px,2.7vh,32px);line-height:1.58;color:var(--mid);max-width:74vw}.obj2-sep{height:1px;background:var(--rule);margin:2.6vh 0}
+.s-plan{justify-content:center}.plan-inner h2{font-family:var(--f);font-size:clamp(28px,4.7vh,46px);font-weight:900;color:var(--k);margin-bottom:3vh;letter-spacing:-.01em}.plan-list{list-style:none;display:flex;flex-direction:column;gap:1.8vh}.plan-list li{display:flex;gap:1.5vw;align-items:flex-start}.roman{font-size:clamp(20px,3.1vh,34px);font-weight:800;color:var(--red);min-width:3.2vw}.plan-txt{font-family:var(--f);font-size:clamp(20px,3.1vh,33px);font-weight:600;color:var(--k);line-height:1.22}
+.s-section2{background:var(--k);justify-content:center;padding-left:8vw}.section2-wrap h2{font-size:clamp(28px,4.7vh,58px);font-weight:900;color:#fff;line-height:1.14;max-width:84vw}
+.s-recap{background:var(--off)}.s-recap h2,.s-list h2,.vs-h,.transfer-title{font-size:clamp(22px,3.6vh,44px);font-weight:900;color:var(--k);line-height:1.12;margin-bottom:2vh;max-width:84vw}.rlist,.blist{list-style:none;display:flex;flex-direction:column}.rlist li,.blist li{display:flex;align-items:flex-start;gap:1.2vw;padding:1.25vh 0;border-bottom:1px solid var(--rule);font-size:clamp(19px,2.5vh,28px);line-height:1.42}.rlist li:first-child,.blist li:first-child{border-top:1px solid var(--rule)}.rlist li{color:var(--mid)}.refined-list .blist li{color:var(--k);font-weight:500;padding-left:1.4vw;position:relative}.refined-list .blist li::before{content:'';position:absolute;left:0;top:1.06em;width:6px;height:6px;border-radius:50%;background:var(--red)}.rlist .n{font-size:clamp(20px,2.8vh,32px);font-weight:900;color:var(--red);min-width:3vw;flex-shrink:0}
+.d-inner{flex:1;display:flex;flex-direction:column;justify-content:center}.dh{font-size:clamp(30px,6vh,72px);font-weight:900;color:var(--k);line-height:1.04;max-width:82vw}.db{font-size:clamp(21px,2.9vh,35px);color:var(--mid);line-height:1.56;max-width:78vw}
+.s-vs{display:flex;flex-direction:column}.vs-grid.two{display:grid;grid-template-columns:1fr 1px 1fr;column-gap:4vw;flex:1;align-items:start}.vdiv{width:1px;background:var(--rule);align-self:stretch}.vc{display:flex;flex-direction:column}.vch{font-size:clamp(24px,3.7vh,44px);font-weight:800;color:var(--k);line-height:1.1}.vc-p{font-size:clamp(19px,2.65vh,30px);color:var(--mid);line-height:1.56}
+.s-transfer2{display:flex;flex-direction:column}
+.s-transfer2 .deco-icon{height:clamp(220px,44vh,380px);width:auto;max-width:60%;display:block;margin:0 auto 1.5vh;object-fit:contain;filter:none}
+.transfer-grid{display:grid;grid-template-columns:1fr auto 1fr;column-gap:2vw;align-items:stretch;flex:1}
+.transfer-card{padding:2.2vh 1.4vw;border-top:4px solid var(--red);background:var(--off);display:flex;flex-direction:column}
+.transfer-card.artisan{background:#f7f7f7}
+.transfer-card.chercheur{background:#fff7f8}
+.card-head{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.6vh;display:flex;align-items:center;gap:.7vw}
+.artisan .card-head{color:var(--muted)}
+.chercheur .card-head{color:var(--k)}
+.transfer-card p{font-size:clamp(18px,2.4vh,27px);line-height:1.52}
+.artisan p{color:var(--mid)}
+.chercheur p{color:var(--k);font-weight:700}
+.transfer-arrow{display:flex;align-items:center;justify-content:center;font-size:clamp(28px,4.6vh,56px);color:var(--red);font-weight:900;padding:0 .5vw}
+.s-cta2{background:var(--k);justify-content:center;padding:0}.cta2-wrap{padding:0 8vw}.cta2-wrap h2{font-size:clamp(32px,5.8vh,70px);font-weight:900;color:#fff;line-height:1.08}.cta2-divider{height:1px;background:#2e2e2e;margin:3.5vh 0}.cta2-links p{font-size:clamp(22px,3.4vh,34px);color:#fff;line-height:1.5}
+#footer{position:fixed;bottom:0;left:0;right:0;height:3.2vh;min-height:26px;background:var(--off);border-top:2px solid var(--red);display:flex;align-items:center;padding:0 2vw;gap:1.5vw;z-index:50;font-size:clamp(9px,1.1vh,12px);color:var(--muted);font-family:var(--f)}#footer .fn{font-weight:700;color:var(--red);min-width:46px}#prog{position:fixed;top:0;left:0;height:3px;background:var(--red);z-index:100;transition:width .3s ease}#dots{position:fixed;right:1vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:5px;z-index:60}.dot{width:6px;height:6px;border-radius:50%;background:#ccc;border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}.dot.on{background:var(--red);transform:scale(1.5)}
+
+/* ── AJOUTS v22 ─────────────────────────────────────── */
+
+/* Cover avec illustration */
+.s-cover{flex-direction:row !important;padding:0 !important;overflow:hidden}
+.cover-left{flex:0 0 56%;padding:5.2vh 4vw 7vh 8vw;display:flex;flex-direction:column;justify-content:center;border-left:8px solid var(--red)}
+.cover-right{flex:1;position:relative;overflow:hidden}
+.cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.cover-left .ev{margin-bottom:3.2vh}
+.cover-left .s-cover h1{font-size:clamp(28px,5.2vh,58px)}
+
+/* Logo ADDA */
+.adda-cover{height:clamp(70px,11vh,130px);object-fit:contain;margin-bottom:3.5vh;display:block}
+.adda-section{position:absolute;bottom:8vh;right:5vw;height:32px;opacity:.35;object-fit:contain;pointer-events:none}
+.adda-cta{height:40px;object-fit:contain;margin-top:3.5vh;opacity:.55;display:block}
+.footer-adda{height:16px;object-fit:contain;margin-left:auto;opacity:.55}
+
+/* Slide 2 redesignée */
+.s-pivot{justify-content:center}
+.pivot-inner{max-width:80vw;display:flex;flex-direction:column;gap:3.2vh}
+.pivot-premise{font-size:clamp(19px,2.6vh,30px);font-weight:400;font-style:italic;color:var(--mid);line-height:1.62;max-width:68vw;padding-left:2vw;border-left:3px solid var(--rule)}
+.pivot-sep{display:flex;align-items:center;gap:10px;margin:.6vh 0}
+.pivot-sep-line{width:40px;height:3px;background:var(--red);flex-shrink:0}
+.pivot-sep-dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0}
+.pivot-question{font-size:clamp(28px,4.8vh,56px);font-weight:900;color:var(--k);line-height:1.1;max-width:78vw}
+
+/* Icônes décoratives slides spécialisées */
+.deco-icon{display:block;margin:0.8vh auto 2.4vh;height:clamp(175px,29vh,255px);width:auto;max-width:56%;object-fit:contain;pointer-events:none;filter:none}
+.card-icon{width:32px;height:32px;flex-shrink:0;background-repeat:no-repeat;background-size:contain}
+/* ─ VS slides : différenciation visuelle Chercheur / IA ─ */
+.vs-grid.two > *:nth-child(1){border-left:3px solid var(--red);padding-left:1.4vw}
+.vs-grid.two > *:nth-child(3) .vch{color:var(--mid);font-style:italic}
+.vs-grid.two > *:nth-child(3) .vc-p{color:#9A9A9A}
+
+/* ─ Icônes dans les listes recap ─ */
+.rlist-icon{width:22px;height:22px;flex-shrink:0;opacity:.65;margin-right:.2vw}
+
+/* ─ Slide de conclusion synthèse ─ */
+.s-conclusion{display:flex;flex-direction:column}
+.concl-title{font-size:clamp(18px,2.85vh,34px);font-weight:900;color:var(--k);line-height:1.18;margin-bottom:2.5vh;max-width:84vw}
+.concl-grid{display:grid;grid-template-columns:1fr 1px 1fr;column-gap:3.5vw;flex:1;align-items:start}
+.concl-divider{width:1px;background:var(--rule);align-self:stretch}
+.concl-card{display:flex;flex-direction:column;padding:1.5vh 0}
+.concl-head{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;margin-bottom:1.8vh}
+.ia-card .concl-head{color:var(--muted)}.chercheur-card .concl-head{color:var(--red)}
+.concl-list{list-style:none;display:flex;flex-direction:column;gap:1.4vh}
+.concl-list li{font-size:clamp(18px,2.5vh,27px);line-height:1.45;padding-left:1.4vw;position:relative}
+.concl-list li::before{content:'';position:absolute;left:0;top:.9em;width:5px;height:5px;border-radius:50%}
+.ia-card .concl-list li{color:var(--mid)}.ia-card .concl-list li::before{background:var(--muted)}
+.chercheur-card .concl-list li{color:var(--k);font-weight:600}.chercheur-card .concl-list li::before{background:var(--red)}
+
+/* ─ Icônes VS en paire (chercheur | IA) ─ */
+.vs-icons-pair{display:flex;justify-content:center;align-items:flex-end;gap:7vw;margin:1vh 0 0;padding-bottom:2vh;border-bottom:1px solid var(--rule);margin-bottom:1.6vh}
+.vs-icon{height:clamp(128px,21vh,185px);width:auto;max-width:44%;object-fit:contain;filter:none}
+
+/* ═══════════════════════════════════════════════
+   v30 — Layouts icônes et harmonisation globale
+   ═══════════════════════════════════════════════ */
+
+/* Detail slides avec icône : grille (icône gauche / texte droite) */
+.s-detail:has(> img.deco-icon){
+  display:grid !important;
+  grid-template-areas:"tag tag" "icon content";
+  grid-template-columns:clamp(220px,34%,340px) 1fr;
+  grid-template-rows:auto 1fr;
+  column-gap:4vw;
+}
+.s-detail:has(> img.deco-icon) > span.tag{grid-area:tag}
+.s-detail:has(> img.deco-icon) > img.deco-icon{
+  grid-area:icon;
+  align-self:center;
+  justify-self:center;
+  height:clamp(260px,46vh,420px);
+  width:auto;
+  max-width:100%;
+  margin:0;
+}
+.s-detail:has(> img.deco-icon) > .d-inner{
+  grid-area:content;
+  border-top:none;
+  margin-top:0;
+  padding-top:0;
+}
+/* Slide sans icône (㉓) et cas généraux : d-inner sans barre */
+.s-detail .d-inner{border-top:none;margin-top:0;padding-top:0}
+
+/* Obj2 : icône grande */
+.s-obj2 .deco-icon{height:clamp(148px,25vh,220px);filter:none}
+
+/* v34 — VS slides : deux panneaux blancs, badge VS flottant */
+.s-vs-manga{padding:0!important;display:grid!important;grid-template-rows:1fr;overflow:hidden}
+.s-vs-manga > .lbar{display:none}
+.vsm-arena{display:grid;grid-template-columns:1fr 1fr;height:100%;min-height:0;position:relative}
+
+/* v43 — Panel flex, icône remplit l'espace disponible */
+.vsm-panel{display:flex!important;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:2.5vh 4vw 3vh;gap:1.5vh;min-height:0;overflow:hidden}
+.vsm-panel-ch{background:#fff;border-left:6px solid var(--red);border-right:1px solid rgba(0,0,0,.07)}
+.vsm-panel-ia{background:#fff}
+.vsm-vs-col{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.8vh;z-index:10;padding:0}
+.vsm-prog{font-size:10px;font-weight:700;color:rgba(0,0,0,.28);letter-spacing:.15em;text-transform:uppercase;line-height:1}
+.vsm-badge{width:clamp(90px,12vw,148px);height:clamp(90px,12vw,148px);background:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.15em;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);flex-shrink:0;filter:drop-shadow(0 4px 16px rgba(196,18,48,.35))}
+.vsm-concept{font-size:clamp(7px,1vw,12px);font-weight:800;color:rgba(255,255,255,.82);text-transform:uppercase;letter-spacing:.14em;line-height:1}
+.vsm-vs-text{font-size:clamp(22px,3.2vw,48px);font-weight:900;color:#fff;letter-spacing:.02em;line-height:1}
+.vsm-icon{flex:1 1 0;min-height:0;width:auto;max-width:90%;object-fit:contain;display:block}
+.vsm-panel-ia .vsm-icon{filter:none}
+.vsm-name{font-size:clamp(20px,3vh,40px);font-weight:800;line-height:1.15;margin:0}
+.vsm-panel-ch .vsm-name{color:var(--k)}
+.vsm-panel-ia .vsm-name{color:var(--k);font-style:italic}
+.vsm-desc{font-size:clamp(16px,2.2vh,27px);line-height:1.5;margin:0;max-width:90%}
+.vsm-panel-ch .vsm-desc{color:var(--mid)}
+.vsm-panel-ia .vsm-desc{color:var(--mid)}
+
+/* ══════════════════════════════════════════════════════
+   v41/v42 — Animations texte déclenchées par .active
+   ══════════════════════════════════════════════════════ */
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+@keyframes zoomIn{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── Éléments masqués par défaut ── */
+.s .tag{opacity:0}
+.s.s-cover .cover-left{opacity:0}
+.s.s-pivot .pivot-premise,.s.s-pivot .pivot-sep,.s.s-pivot .pivot-question{opacity:0}
+.s.s-plan .plan-inner h2,.s.s-plan .plan-list li{opacity:0}
+.s.s-obj2 .deco-icon,.s.s-obj2 .obj2-title,.s.s-obj2 .obj2-block,.s.s-obj2 .obj2-sep{opacity:0}
+.s.s-section2 .section2-wrap h2{opacity:0}
+.s.s-recap h2,.s.s-list h2{opacity:0}
+.s .rlist li,.s .blist li{opacity:0}
+.s.s-detail .deco-icon,.s.s-detail .dh,.s.s-detail .db{opacity:0}
+.s.s-transfer2 .deco-icon,.s.s-transfer2 .transfer-title,.s.s-transfer2 .transfer-card,.s.s-transfer2 .transfer-arrow{opacity:0}
+.s.s-vs-manga .vsm-panel,.s.s-vs-manga .vsm-vs-col{opacity:0}
+.s.s-conclusion .concl-title,.s.s-conclusion .concl-card{opacity:0}
+.s.s-cta2 .cta2-wrap > *{opacity:0}
+
+/* ── Cover ── */
+.s.active.s-cover .cover-left{animation:fadeLeft .6s ease both .08s}
+
+/* ── Pivot ── */
+.s.active.s-pivot .pivot-premise{animation:fadeUp .45s ease both .1s}
+.s.active.s-pivot .pivot-sep{animation:fadeUp .35s ease both .28s}
+.s.active.s-pivot .pivot-question{animation:fadeUp .5s ease both .42s}
+
+/* ── Tag (commun à toutes les slides) ── */
+.s.active .tag{animation:fadeUp .3s ease both .05s}
+
+/* ── Section header ── */
+.s.active.s-section2 .section2-wrap h2{animation:zoomIn .52s ease both .1s}
+
+/* ── Plan ── */
+.s.active.s-plan .plan-inner h2{animation:fadeUp .4s ease both .12s}
+.s.active.s-plan .plan-list li:nth-child(1){animation:fadeUp .4s ease both .25s}
+.s.active.s-plan .plan-list li:nth-child(2){animation:fadeUp .4s ease both .38s}
+.s.active.s-plan .plan-list li:nth-child(3){animation:fadeUp .4s ease both .51s}
+
+/* ── Obj2 ── */
+.s.active.s-obj2 .deco-icon{animation:zoomIn .45s ease both .06s}
+.s.active.s-obj2 .obj2-title{animation:fadeUp .45s ease both .2s}
+.s.active.s-obj2 .obj2-block:nth-of-type(1){animation:fadeUp .4s ease both .35s}
+.s.active.s-obj2 .obj2-sep{animation:fadeUp .3s ease both .33s}
+.s.active.s-obj2 .obj2-block:nth-of-type(2){animation:fadeUp .4s ease both .5s}
+
+/* ── Recap / List ── */
+.s.active.s-recap h2,.s.active.s-list h2{animation:fadeUp .42s ease both .2s}
+.s.active .rlist li:nth-child(1),.s.active .blist li:nth-child(1){animation:fadeUp .38s ease both .32s}
+.s.active .rlist li:nth-child(2),.s.active .blist li:nth-child(2){animation:fadeUp .38s ease both .43s}
+.s.active .rlist li:nth-child(3),.s.active .blist li:nth-child(3){animation:fadeUp .38s ease both .54s}
+.s.active .rlist li:nth-child(4),.s.active .blist li:nth-child(4){animation:fadeUp .38s ease both .65s}
+.s.active .rlist li:nth-child(5),.s.active .blist li:nth-child(5){animation:fadeUp .38s ease both .76s}
+.s.active .rlist li:nth-child(6),.s.active .blist li:nth-child(6){animation:fadeUp .38s ease both .87s}
+
+/* ── Detail ── */
+.s.active.s-detail .deco-icon{animation:zoomIn .48s ease both .12s}
+.s.active.s-detail .dh{animation:fadeUp .45s ease both .22s}
+.s.active.s-detail .db{animation:fadeUp .42s ease both .38s}
+
+/* ── Transfer ── */
+.s.active.s-transfer2 .deco-icon{animation:zoomIn .48s ease both .08s}
+.s.active.s-transfer2 .transfer-title{animation:fadeUp .42s ease both .24s}
+.s.active.s-transfer2 .transfer-card.artisan{animation:fadeLeft .45s ease both .4s}
+.s.active.s-transfer2 .transfer-arrow{animation:fadeUp .35s ease both .52s}
+.s.active.s-transfer2 .transfer-card.chercheur{animation:fadeRight .45s ease both .58s}
+
+/* ── VS manga ── */
+.s.active.s-vs-manga .vsm-panel-ch{animation:fadeLeft .45s ease both .05s}
+.s.active.s-vs-manga .vsm-panel-ia{animation:fadeRight .45s ease both .05s}
+/* fadeIn seul (sans transform) pour ne pas écraser le translate(-50%,-50%) du badge */
+.s.active.s-vs-manga .vsm-vs-col{animation:fadeIn .42s ease both .38s}
+
+/* ── Conclusion ── */
+.s.active.s-conclusion .concl-title{animation:fadeUp .45s ease both .12s}
+.s.active.s-conclusion .ia-card{animation:fadeLeft .45s ease both .32s}
+.s.active.s-conclusion .chercheur-card{animation:fadeRight .45s ease both .5s}
+
+/* ── CTA ── */
+.s.active.s-cta2 .cta2-wrap > *:nth-child(1){animation:zoomIn .5s ease both .08s}
+.s.active.s-cta2 .cta2-wrap > *:nth-child(2){animation:fadeUp .4s ease both .28s}
+.s.active.s-cta2 .cta2-wrap > *:nth-child(3){animation:fadeUp .4s ease both .44s}
+.s.active.s-cta2 .cta2-wrap > *:nth-child(4){animation:fadeUp .4s ease both .6s}
+</style></head><body><div id="prog"></div><div id="deck">
+
+<!-- ① COVER ────────────────────────────────────────── -->
+<section class="s s-cover">
+  <div class="cover-left">
+    <img src="stocks/logo ADDA.png" alt="A.D.D.A" class="adda-cover">
+    <p class="ev">Colloque ADDA · 4 juin 2026 · Innovations sous contrôle : démocratie et numérique</p>
+    <h1>Chercheurs : comment allez-vous survivre à l'IA&nbsp;?</h1>
+    <p class="sub-it">L'impact de l'IA générative sur la production du savoir scientifique</p>
+    <hr class="chr">
+    <p class="auth">Jimmy Kolbe-André</p>
+    <p class="role">Doctorant en droit public, Université Paris-Panthéon-Assas</p>
+    <p class="contact">LinkedIn · kolbejimmy@gmail.com</p>
+  </div>
+  <div class="cover-right">
+    <img src="stocks/ChatGPT Image 17 mai 2026, 21_16_57.png" alt="" class="cover-img">
+  </div>
+</section>
+
+<!-- ② PIVOT (slide 2 redesignée) ───────────────────── -->
+<section class="s s-pivot">
+  <div class="lbar"></div>
+  <div class="pivot-inner">
+    <p class="pivot-premise">Nous déléguons pour la première fois nos facultés intellectuelles et créatives à des machines.</p>
+    <div class="pivot-sep"><div class="pivot-sep-line"></div><div class="pivot-sep-dot"></div></div>
+    <p class="pivot-question">Quel impact sur la production du savoir scientifique&nbsp;?</p>
+  </div>
+</section>
+
+<!-- ③ OBJECTIFS ──────────────────────────────────────── -->
+<section class="s s-obj2"><div class="lbar"></div><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/grille_lecture.png" alt=""><div class="obj2-wrap"><h2 class="obj2-title">Fournir une grille de lecture pour comprendre la révolution IA</h2><div class="obj2-block"><h3>Objectif principal</h3><div class="rl"></div><p>Comprendre ce que l'IA change dans la production du savoir scientifique, et ce qui restera propre au chercheur.</p></div><div class="obj2-sep"></div><div class="obj2-block"><h3>Limites</h3><div class="rl"></div><p>Il ne s'agit pas de vous avertir sur les risques de l'IA ni de vous former sur ses bonnes pratiques.</p></div></div></section>
+
+<!-- ④ PLAN ───────────────────────────────────────────── -->
+<section class="s s-plan"><div class="lbar"></div><div class="plan-inner"><h2>Plan</h2><ul class="plan-list"><li><span class="roman">I.</span><span class="plan-txt">Les spécificités de l'IA conçue comme une révolution industrielle</span></li><li><span class="roman">II.</span><span class="plan-txt">Les différences fondamentales entre le savoir produit par le chercheur et le texte généré par l'IA</span></li><li><span class="roman">III.</span><span class="plan-txt">Les fonctions du chercheur qui peuvent encore conserver une valeur ajoutée par rapport à l'IA</span></li></ul></div></section>
+
+<!-- ⑤ SECTION I ──────────────────────────────────────── -->
+<section class="s s-section2"><div class="lbar"></div><div class="section2-wrap"><h2>I. Les spécificités de l'IA conçue comme une révolution industrielle</h2></div><img src="stocks/logo ADDA.png" alt="ADDA" class="adda-section"></section>
+
+<!-- ⑥ RECAP — traits communs ─────────────────────────── -->
+<section class="s s-recap"><div class="lbar"></div><span class="tag">Les traits communs aux révolutions industrielles</span><h2>Une révolution industrielle réorganise le travail de 4 façons.</h2><ul class="rlist"><li><span class="n">01</span><span>Standardisation des produits</span></li><li><span class="n">02</span><span>Spécialisation et division des tâches</span></li><li><span class="n">03</span><span>Automatisation des procédés de travail</span></li><li><span class="n">04</span><span>Rationalisation du processus de production</span></li></ul></section>
+
+<!-- ⑦ DETAIL — Standardisation ──────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits communs aux révolutions industrielles · 1/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/standardisation.png" alt=""><div class="d-inner"><h2 class="dh">Standardisation des produits</h2><div class="rl"></div><p class="db">On passe de l'objet artisanal unique à la pièce interchangeable. Le produit n'est plus fabriqué comme une singularité, mais selon des standards de production reproductibles.</p></div></section>
+
+<!-- ⑧ DETAIL — Spécialisation ────────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits communs aux révolutions industrielles · 2/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/specialisation.png" alt=""><div class="d-inner"><h2 class="dh">Spécialisation et division des tâches</h2><div class="rl"></div><p class="db">Le travail est décomposé en tâches élémentaires confiées à des opérateurs distincts. Chacun ne maîtrise plus qu'un fragment spécialisé du processus productif.</p></div></section>
+
+<!-- ⑨ DETAIL — Automatisation procédés ──────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits communs aux révolutions industrielles · 3/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/automatisation.png" alt=""><div class="d-inner"><h2 class="dh">Automatisation des procédés de travail</h2><div class="rl"></div><p class="db">La machine prend en charge ce qui était exécuté manuellement. L'effort humain se déplace vers la conduite et la surveillance des machines.</p></div></section>
+
+<!-- ⑩ DETAIL — Rationalisation ──────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits communs aux révolutions industrielles · 4/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/rationalisation.png" alt=""><div class="d-inner"><h2 class="dh">Rationalisation du processus de production</h2><div class="rl"></div><p class="db">Chaque procédé de travail est mesuré, chronométré, optimisé. Seules les tâches les plus efficaces sont conservées.</p></div></section>
+
+<!-- ⑪ RECAP — traits distinctifs IA ─────────────────── -->
+<section class="s s-recap"><div class="lbar"></div><span class="tag">Les traits distinctifs de la révolution IA</span><h2>Ce qui distingue la révolution IA des précédentes.</h2><ul class="rlist"><li><span class="n">01</span><span>Technologie à usage universel</span></li><li><span class="n">02</span><span>Ubérisation de la connaissance</span></li><li><span class="n">03</span><span>Automatisation cognitive</span></li><li><span class="n">04</span><span>Auto-amélioration</span></li></ul></section>
+
+<!-- ⑫ DETAIL — Technologie à usage universel ─────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits distinctifs de la révolution IA · 1/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/technologie_usage_universel.png" alt=""><div class="d-inner"><h2 class="dh">Métarévolution</h2><div class="rl"></div><p class="db">N'importe quel individu peut s'en emparer et révolutionner son propre domaine de compétences en standardisant ses procédés de travail.</p></div></section>
+
+<!-- ⑬ DETAIL — Ubérisation ───────────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits distinctifs de la révolution IA · 2/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/uberisation_connaissance.png" alt=""><div class="d-inner"><h2 class="dh">Ubérisation de la connaissance</h2><div class="rl"></div><p class="db">Comme Uber a remplacé le monopole des taxis,<br>l'IA est désormais accessible à tous.</p></div></section>
+
+<!-- ⑭ DETAIL — Automatisation cognitive ─────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits distinctifs de la révolution IA · 3/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/automatisation_cognitive.png" alt=""><div class="d-inner"><h2 class="dh">Automatisation cognitive</h2><div class="rl"></div><p class="db">Pour la première fois, la machine automatise<br>des tâches cognitives liées au raisonnement et à la création.<br><br>Elle touche aux fonctions des cols blancs,<br>là où toutes les révolutions précédentes s'arrêtaient.</p></div></section>
+
+<!-- ⑮ DETAIL — Auto-amélioration ────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Les traits distinctifs de la révolution IA · 4/4</span><img class="deco-icon" src="icones/pack_01_revolution_industrielle_ia/auto_amelioration.png" alt=""><div class="d-inner"><h2 class="dh">Auto-amélioration</h2><div class="rl"></div><p class="db">L'IA peut être programmée pour s'évaluer elle-même,<br>identifier ses erreurs et améliorer ses propres processus de travail,<br>sans intervention humaine à chaque cycle.<br><br>Dans les révolutions industrielles précédentes,<br>un ingénieur devait repenser toute l'organisation à chaque innovation.</p></div></section>
+
+<!-- ⑯ SECTION II ─────────────────────────────────────── -->
+<section class="s s-section2"><div class="lbar"></div><div class="section2-wrap"><h2>II. Les différences fondamentales entre le savoir produit par le chercheur et le texte généré par l'IA</h2></div><img src="stocks/logo ADDA.png" alt="ADDA" class="adda-section"></section>
+
+<!-- ⑰ RECAP — diff. épistémologiques ────────────────── -->
+<section class="s s-recap"><div class="lbar"></div><span class="tag">Les différences épistémologiques : justification versus prédiction</span><h2>Le chercheur produit un savoir qui doit être justifié de manière rationnelle. L'IA prédit du texte en générant une suite de mots probables.</h2><ul class="rlist"><li><span class="n">01</span><span>Objectif : comprendre vs calculer</span></li><li><span class="n">02</span><span>Méthode : justifier vs corréler</span></li><li><span class="n">03</span><span>Erreur : rectifier vs bluffer</span></li></ul></section>
+
+<!-- ⑱ VS — Objectif ─────────────────────────────────── -->
+<section class="s s-vs-manga"><div class="lbar"></div><div class="vsm-arena"><div class="vsm-panel vsm-panel-ch"><img class="vsm-icon" src="icones/pack_04_differences_epistemologiques/chercheur_comprend.png" alt=""><h3 class="vsm-name">Le chercheur comprend</h3><p class="vsm-desc">Connaît en comprenant, en raisonnant,<br>en reliant des idées entre elles.</p></div><div class="vsm-vs-col"><span class="vsm-prog">1/3</span><div class="vsm-badge"><span class="vsm-concept">Objectif</span><span class="vsm-vs-text">VS</span></div></div><div class="vsm-panel vsm-panel-ia"><img class="vsm-icon" src="icones/pack_04_differences_epistemologiques/ia_probabilite.png" alt=""><h3 class="vsm-name">L'IA calcule</h3><p class="vsm-desc">Calcule la suite de mots<br>la plus probable.</p></div></div></section>
+
+<!-- ⑲ VS — Méthode ──────────────────────────────────── -->
+<section class="s s-vs-manga"><div class="lbar"></div><div class="vsm-arena"><div class="vsm-panel vsm-panel-ch"><img class="vsm-icon" src="icones/pack_04_differences_epistemologiques/chercheur_justifier.png" alt=""><h3 class="vsm-name">Le chercheur justifie</h3><p class="vsm-desc">Justifie par des arguments rationnels<br>et des preuves empiriques.</p></div><div class="vsm-vs-col"><span class="vsm-prog">2/3</span><div class="vsm-badge"><span class="vsm-concept">Méthode</span><span class="vsm-vs-text">VS</span></div></div><div class="vsm-panel vsm-panel-ia"><img class="vsm-icon" src="icones/pack_04_differences_epistemologiques/ia_correlation.png" alt=""><h3 class="vsm-name">L'IA fait des corrélations</h3><p class="vsm-desc">Justifie par la qualité statistique<br>de ses corrélations,<br>dont le fonctionnement est parfois opaque (boîte noire).</p></div></div></section>
+
+<!-- ⑳ VS — Erreur ───────────────────────────────────── -->
+<section class="s s-vs-manga"><div class="lbar"></div><div class="vsm-arena"><div class="vsm-panel vsm-panel-ch"><img class="vsm-icon" src="icones/pack_04_differences_epistemologiques/chercheur_rectifier.png" alt=""><h3 class="vsm-name">Le chercheur rectifie</h3><p class="vsm-desc">Processus itératif : se tromper,<br>rectifier, apprendre, se responsabiliser.</p></div><div class="vsm-vs-col"><span class="vsm-prog">3/3</span><div class="vsm-badge"><span class="vsm-concept">Erreur</span><span class="vsm-vs-text">VS</span></div></div><div class="vsm-panel vsm-panel-ia"><img class="vsm-icon" src="icones/pack_04_differences_epistemologiques/ia_poker_bluff.png" alt=""><h3 class="vsm-name">L'IA bluffe</h3><p class="vsm-desc">Affirme avec aplomb, hallucine,<br>sans conscience de l'erreur<br>ni responsabilité.</p></div></div></section>
+
+<!-- ㉑ LIST — tâches automatisables ─────────────────── -->
+<section class="s s-list refined-list"><div class="lbar"></div><span class="tag">Les tâches scientifiques déjà automatisables par l'IA</span><h2>La fonction prédictive de l'IA est très puissante en ce qu'elle permet d'automatiser l'essentiel des tâches scientifiques !</h2><div class="rl"></div><ul class="blist"><li>Générer et affiner des idées de recherche, formuler des hypothèses</li><li>Concevoir des expériences et effectuer des revues de littérature systématiques</li><li>Rédiger, reformuler, structurer et résumer des textes académiques</li><li>Analyser et visualiser des données qualitatives et quantitatives</li><li>Développer des cadres théoriques et méthodologiques interdisciplinaires</li><li>Suggérer des sources et des citations pertinentes, résumer des textes complexes</li></ul></section>
+
+<!-- ㉒ SECTION III ────────────────────────────────────── -->
+<section class="s s-section2"><div class="lbar"></div><div class="section2-wrap"><h2>III. Les fonctions du chercheur qui peuvent encore conserver une valeur ajoutée par rapport à l'IA</h2></div><img src="stocks/logo ADDA.png" alt="ADDA" class="adda-section"></section>
+
+<!-- ㉓ DETAIL — hypothèse artisans ──────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Notre hypothèse</span><div class="d-inner"><h2 class="dh">Le chercheur doit s'inspirer des artisans qui ont survécu à la révolution industrielle</h2><div class="rl"></div><p class="db">Que ce soit face à la machine à vapeur ou à l'ordinateur, les artisans qui ont survécu n'ont pas résisté à la machine. Ils ont développé des traits spécifiques qu'elle ne pouvait ni acquérir ni reproduire.</p></div></section>
+
+<!-- ㉔ RECAP — quatre facteurs ───────────────────────── -->
+<section class="s s-recap"><div class="lbar"></div><span class="tag">Quatre facteurs de survie déclinables aux chercheurs face à l'IA</span><h2>Quatre facteurs permettent de comprendre la survie des artisans, et peuvent être déclinés aux chercheurs.</h2><ul class="rlist"><li><span class="n">01</span><span>Luxe et goût</span></li><li><span class="n">02</span><span>Sur-mesure et niche</span></li><li><span class="n">03</span><span>Écosystèmes sociaux</span></li><li><span class="n">04</span><span>Complémentarité avec l'industrie</span></li></ul></section>
+
+<!-- ㉕ TRANSFER — Luxe et goût ───────────────────────── -->
+<section class="s s-transfer2"><div class="lbar"></div><span class="tag">Facteur 1/4</span><img class="deco-icon" src="icones/pack_02_facteurs_survie/luxe_gout.png" alt=""><h2 class="transfer-title">Luxe et goût</h2><div class="transfer-grid">
+<div class="transfer-card artisan"><div class="card-head">L'artisan</div><p>Ex. : la joaillerie, la haute couture produisent des objets luxueux qui ont de la valeur parce qu'ils sont le fruit d'un jugement esthétique qui ne peut pas être simulé ni massifié.</p></div>
+<div class="transfer-arrow">→</div>
+<div class="transfer-card chercheur"><div class="card-head">Le chercheur</div><p>Le chercheur produit un savoir haut de gamme et possède suffisamment de goût pour juger de l'intérêt théorique d'une idée.</p></div>
+</div></section>
+
+<!-- ㉖ TRANSFER — Sur-mesure ─────────────────────────── -->
+<section class="s s-transfer2"><div class="lbar"></div><span class="tag">Facteur 2/4</span><img class="deco-icon" src="icones/pack_02_facteurs_survie/sur_mesure_niche.png" alt=""><h2 class="transfer-title">Sur-mesure et niche</h2><div class="transfer-grid">
+<div class="transfer-card artisan"><div class="card-head">L'artisan</div><p>Ex. : la lutherie, la restauration d'art déploient une expertise technique qui a de la valeur parce qu'elle est fondamentalement singulière et irréductible à un procédé standard.</p></div>
+<div class="transfer-arrow">→</div>
+<div class="transfer-card chercheur"><div class="card-head">Le chercheur</div><p>Le chercheur demeure un expert de son champ disciplinaire qu'aucune IA entraînée ne pourra restituer.</p></div>
+</div></section>
+
+<!-- ㉗ TRANSFER — Écosystèmes sociaux ────────────────── -->
+<section class="s s-transfer2"><div class="lbar"></div><span class="tag">Facteur 3/4</span><img class="deco-icon" src="icones/pack_02_facteurs_survie/ecosystemes_sociaux.png" alt=""><h2 class="transfer-title">Écosystèmes sociaux</h2><div class="transfer-grid">
+<div class="transfer-card artisan"><div class="card-head">L'artisan</div><p>Ex. : les canuts de Lyon, les ateliers florentins maintiennent une excellence qui a de la valeur parce qu'elle s'appuie sur des réseaux physiques où le savoir se forme.</p></div>
+<div class="transfer-arrow">→</div>
+<div class="transfer-card chercheur"><div class="card-head">Le chercheur</div><p>Les événements scientifiques, les laboratoires, constituent autant d'espaces d'échange où la connaissance se construit collectivement, notamment par des frictions entre pairs.</p></div>
+</div></section>
+
+<!-- ㉘ TRANSFER — Complémentarité ────────────────────── -->
+<section class="s s-transfer2"><div class="lbar"></div><span class="tag">Facteur 4/4</span><img class="deco-icon" src="icones/pack_02_facteurs_survie/complementarite_industrie.png" alt=""><h2 class="transfer-title">Complémentarité avec l'industrie</h2><div class="transfer-grid">
+<div class="transfer-card artisan"><div class="card-head">L'artisan</div><p>Ex. : le sellier-maroquinier façonne des intérieurs de voiture sur mesure qui ont de la valeur parce qu'ils viennent habiller un véhicule assemblé par des robots sans jamais concurrencer la chaîne de production.</p></div>
+<div class="transfer-arrow">→</div>
+<div class="transfer-card chercheur"><div class="card-head">Le chercheur</div><p>Il ne faut pas être binaire : pour ou contre l'IA ; mais savoir quelles tâches lui déléguer tout en gardant la main sur l'orchestration de la production scientifique.</p></div>
+</div></section>
+
+<!-- ㉙ RECAP — apports propres ───────────────────────── -->
+<section class="s s-recap"><div class="lbar"></div><span class="tag">Ce que le chercheur apporte en propre</span><h2>Ce constat permet de systématiser 4 fonctions que l'IA ne peut (pourra?) jamais accomplir.</h2><ul class="rlist"><li><span class="n">01</span><span>Heuristique : découvrir ce qui n'existe pas encore</span></li><li><span class="n">02</span><span>Herméneutique : interpréter ce que la machine ne fait que décrire</span></li><li><span class="n">03</span><span>Axiologique : choisir ce qui a de la valeur</span></li><li><span class="n">04</span><span>Sociale : produire du savoir ensemble</span></li></ul></section>
+
+<!-- ㉚ DETAIL — Heuristique ──────────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Apport 1/4</span><img class="deco-icon" src="icones/pack_03_fonctions_chercheur/heuristique.png" alt=""><div class="d-inner"><h2 class="dh">Heuristique</h2><div class="rl"></div><p class="db">Poser une question que personne n'a posée, reconnaître une anomalie, produire un saut conceptuel. L'IA optimise à l'intérieur d'un cadre. Le chercheur sait quel cadre dépasser.</p></div></section>
+
+<!-- ㉛ DETAIL — Herméneutique ────────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Apport 2/4</span><img class="deco-icon" src="icones/pack_03_fonctions_chercheur/hermeneutique.png" alt=""><div class="d-inner"><h2 class="dh">Herméneutique</h2><div class="rl"></div><p class="db">L'IA capte le contenu manifeste : fréquences, co-occurrences, schémas. Le chercheur accède au sens implicite, aux non-dits, à l'ironie, à la contradiction. Interpréter, c'est autre chose que résumer.</p></div></section>
+
+<!-- ㉜ DETAIL — Axiologique ──────────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Apport 3/4</span><img class="deco-icon" src="icones/pack_03_fonctions_chercheur/axiologique.png" alt=""><div class="d-inner"><h2 class="dh">Axiologique</h2><div class="rl"></div><p class="db">Choisir une question de recherche, c'est poser un jugement sur ce qui a de la valeur. L'IA résout des problèmes. Le chercheur décide lesquels méritent d'être posés.</p></div></section>
+
+<!-- ㉝ DETAIL — Sociale ──────────────────────────────── -->
+<section class="s s-detail"><div class="lbar"></div><span class="tag">Apport 4/4</span><img class="deco-icon" src="icones/pack_03_fonctions_chercheur/sociale.png" alt=""><div class="d-inner"><h2 class="dh">Sociale</h2><div class="rl"></div><p class="db">La science est une entreprise collective : confiance, confrontation entre pairs, cumul intergénérationnel des savoirs. Construire un réseau, former un doctorant, reconnaître une erreur : autant de compétences que l'IA n'a pas.</p></div></section>
+
+
+<!-- ㉞ CONCLUSION — synthèse double ─────────────────── -->
+<section class="s s-conclusion">
+  <div class="lbar"></div>
+  <span class="tag">Synthèse</span>
+  <h2 class="concl-title">Ce que l'IA change, et ce qu'elle ne changera pas</h2>
+  <div class="concl-grid">
+    <div class="concl-card ia-card">
+      <div class="concl-head">Ce que l'IA fait mieux</div>
+      <ul class="concl-list">
+        <li>Traiter et synthétiser de grandes quantités de texte</li>
+        <li>Générer des hypothèses et des formulations à vitesse industrielle</li>
+        <li>Identifier des corrélations dans des données complexes</li>
+        <li>Rédiger, reformuler et structurer des textes en quelques secondes</li>
+      </ul>
+    </div>
+    <div class="concl-divider"></div>
+    <div class="concl-card chercheur-card">
+      <div class="concl-head">Ce que le chercheur conserve</div>
+      <ul class="concl-list">
+        <li><strong>Heuristique :</strong> poser des questions que personne n'avait posées</li>
+        <li><strong>Herméneutique :</strong> interpréter ce que la machine ne fait que décrire</li>
+        <li><strong>Axiologique :</strong> choisir ce qui mérite vraiment d'être étudié</li>
+        <li><strong>Sociale :</strong> construire du savoir avec ses pairs et pour eux</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ㉟ CTA ────────────────────────────────────────────── -->
+<section class="s s-cta2"><div class="cta2-wrap"><h2>Merci beaucoup, à vos questions !</h2><div class="cta2-divider"></div><div class="cta2-links"><p>LinkedIn : Jimmy Kolbe-André</p><p>kolbejimmy@gmail.com</p></div><img src="stocks/logo ADDA.png" alt="A.D.D.A" class="adda-cta"></div></section>
+
+</div><div id="dots"><button class="dot" title="1"></button>
+<button class="dot" title="2"></button>
+<button class="dot" title="3"></button>
+<button class="dot" title="4"></button>
+<button class="dot" title="5"></button>
+<button class="dot" title="6"></button>
+<button class="dot" title="7"></button>
+<button class="dot" title="8"></button>
+<button class="dot" title="9"></button>
+<button class="dot" title="10"></button>
+<button class="dot" title="11"></button>
+<button class="dot" title="12"></button>
+<button class="dot" title="13"></button>
+<button class="dot" title="14"></button>
+<button class="dot" title="15"></button>
+<button class="dot" title="16"></button>
+<button class="dot" title="17"></button>
+<button class="dot" title="18"></button>
+<button class="dot" title="19"></button>
+<button class="dot" title="20"></button>
+<button class="dot" title="21"></button>
+<button class="dot" title="22"></button>
+<button class="dot" title="23"></button>
+<button class="dot" title="24"></button>
+<button class="dot" title="25"></button>
+<button class="dot" title="26"></button>
+<button class="dot" title="27"></button>
+<button class="dot" title="28"></button>
+<button class="dot" title="29"></button>
+<button class="dot" title="30"></button>
+<button class="dot" title="31"></button>
+<button class="dot" title="32"></button>
+<button class="dot" title="33"></button>
+<button class="dot" title="34"></button>
+<button class="dot" title="35"></button></div><div id="footer"><span class="fn"></span><span>L'impact de l'IA générative sur la production du savoir scientifique</span><img src="stocks/logo ADDA.png" alt="ADDA" class="footer-adda"></div><script>
+const ss=document.querySelectorAll('.s'),ds=document.querySelectorAll('.dot'),pg=document.getElementById('prog'),fn=document.querySelector('.fn'),N=ss.length;let c=0;function go(n){if(n<0||n>=N)return;ss[c].classList.remove('active');ss[c].classList.add('out');ds[c].classList.remove('on');const p=c;c=n;setTimeout(()=>ss[p].classList.remove('out'),240);ss[c].classList.add('active');ds[c].classList.add('on');pg.style.width=((c+1)/N*100)+'%';fn.textContent=(c+1)+' / '+N;}document.addEventListener('keydown',e=>{if([' ','ArrowRight','ArrowDown','PageDown'].includes(e.key)){e.preventDefault();go(c+1)}if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(c-1)}if(e.key==='Home')go(0);if(e.key==='End')go(N-1)});let tx=0;document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d<-40)go(c+1);if(d>40)go(c-1)});document.getElementById('deck').addEventListener('click',e=>{if(e.target.closest('#dots'))return;e.clientX>window.innerWidth/2?go(c+1):go(c-1)});ds.forEach((d,i)=>d.addEventListener('click',()=>go(i)));go(0);
+</script></body></html>
