@@ -227,6 +227,51 @@ html,body{font-family:var(--f);background:#111;height:100%;overflow:hidden}#deck
 .s.active.s-cta2 .cta2-wrap > *:nth-child(2){animation:fadeUp .4s ease both .28s}
 .s.active.s-cta2 .cta2-wrap > *:nth-child(3){animation:fadeUp .4s ease both .44s}
 .s.active.s-cta2 .cta2-wrap > *:nth-child(4){animation:fadeUp .4s ease both .6s}
+
+
+/* ── Responsive mobile/tablette ── */
+@media (max-width: 1100px){
+  html,body{overflow:auto}
+  #deck{height:auto;min-height:100vh;overflow:visible}
+  .s{position:relative;inset:auto;min-height:auto;height:auto;opacity:1;pointer-events:auto;transform:none!important;transition:none;padding:5vh 6vw 10vh}
+  .s.out,.s.active{transform:none}
+  .s *{animation:none!important;opacity:1!important}
+  #dots,#prog{display:none}
+  #footer{position:sticky;bottom:0}
+
+  .s-cover{display:flex!important;flex-direction:column!important;padding:0!important;position:relative;isolation:isolate;background:url("stocks/ChatGPT Image 17 mai 2026, 21_16_57.png") center top/cover no-repeat}
+  .s-cover::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:0}
+  .cover-left{flex:1;padding:5vh 6vw 4vh;border-left:6px solid var(--red);position:relative;z-index:1;background:transparent}
+  .cover-left h1,.cover-left .auth,.cover-left .role,.cover-left .contact{color:#fff}
+  .cover-left .sub-it,.cover-left .ev{color:#ffd8de}
+  .cover-left .chr{border-top-color:rgba(255,255,255,.45)}
+  .cover-right{display:none}
+
+  .pivot-inner,.obj2-wrap,.to2-wrap,.plan-inner,.section2-wrap,.transfer-grid,.concl-grid,.vs-grid.two{max-width:100%;width:100%}
+  .s-detail:has(> img.deco-icon){display:flex!important;flex-direction:column;gap:2vh}
+  .s-detail:has(> img.deco-icon) > img.deco-icon{height:clamp(180px,36vh,280px)}
+  .transfer-grid{grid-template-columns:1fr;gap:1.4vh}
+  .transfer-arrow{transform:rotate(90deg)}
+  .concl-grid,.vs-grid.two{display:flex;flex-direction:column;gap:2vh}
+  .concl-divider,.vdiv{display:none}
+  .vsm-arena{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:1.5vh}
+  .vsm-panel{overflow:visible}
+  .vsm-vs-col{position:static;transform:none;order:2;margin:0 auto}
+}
+
+@media (max-width: 700px){
+  .s{padding:4vh 5vw 11vh}
+  .ev{font-size:11px}
+  .auth{font-size:18px}
+  .role,.contact{font-size:14px}
+  .pivot-premise,.db,.vc-p,.transfer-card p,.concl-list li{font-size:clamp(16px,2.1vh,20px);max-width:100%}
+  .pivot-question,.obj2-title,.dh,.section2-wrap h2,.cta2-wrap h2{font-size:clamp(24px,4.2vh,34px);max-width:100%}
+  .rlist li,.blist li,.plan-txt{font-size:clamp(16px,2.1vh,20px)}
+  .roman,.rlist .n{min-width:auto}
+  .deco-icon,.s-transfer2 .deco-icon,.vs-icon{max-width:78%}
+  .adda-cover{height:clamp(54px,9vh,86px)}
+}
+
 </style></head><body><div id="prog"></div><div id="deck">
 
 <!-- ① COVER ────────────────────────────────────────── -->
